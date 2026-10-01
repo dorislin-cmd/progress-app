@@ -1,0 +1,17 @@
+[Unit]
+Description=Progress board
+After=network-online.target
+
+[Service]
+User=progress
+WorkingDirectory=/opt/progress-app
+Environment=GCP_PROJECT=tw-rd-sa-doris-lin
+Environment=DB_HOST=10.30.0.3
+Environment=DB_NAME=lab
+Environment=DB_USER=progress_app
+Environment=DB_SSL_CA=/opt/progress-app/server-ca.pem
+ExecStart=/opt/progress-app/venv/bin/gunicorn -w 2 -b 0.0.0.0:8080 progress_app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
