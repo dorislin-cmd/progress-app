@@ -1,0 +1,5 @@
+flask
+pymysql
+cryptography
+gunicorn
+google-cloud-secret-manager
